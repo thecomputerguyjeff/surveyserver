@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigInteger;
+
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
@@ -19,7 +21,7 @@ public class MongoDbSurveyShellRepository implements SurveyShellRepository {
     }
 
     @Override
-    public SurveyShell findOne(Long id) {
+    public SurveyShell findOneById(BigInteger id) {
         Query query = query(where("id").is(id));
         return operations.findOne(query, SurveyShell.class);
     }
