@@ -1,17 +1,13 @@
 package com.ti.surveyserver.config;
 
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
-import com.mongodb.WriteConcern;
-import com.mongodb.client.jndi.MongoClientFactory;
+import com.mongodb.*;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.data.convert.CustomConversions;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Configuration
 @ComponentScan
@@ -24,10 +20,15 @@ public class ApplicationConfig extends AbstractMongoConfiguration {
     }
     @Override
     public MongoClient mongoClient() {
-
-        MongoClient mongo =  new MongoClient("mongodb+srv://caih330-jn5ns.mongodb.net/");
-        mongo.setWriteConcern(WriteConcern.MAJORITY);
-
-        return mongo;
+        MongoCredential credential = MongoCredential.createCredential("CAIH330", getDatabaseName(), "h8dZHqG7bEqXragz".toCharArray());
+        ServerAddress serverAddress = new ServerAddress("mongodb+srv://caih330-jn5ns.mongodb.net");
+//        MongoClientOptions options = MongoClientOptions.builder()
+//                .socketTimeout(socketTimeout)
+//                .serverSelectionTimeout(serverSelectTimeout)
+//                .connectTimeout(connectTimeout)
+//                .requiredReplicaSetName(replicaSet)
+//                .writeConcern(WriteConcern.MAJORITY)
+//                .build();
+        return new MongoClient(serverAddress, credential, null);
     }
 }
