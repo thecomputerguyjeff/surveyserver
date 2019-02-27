@@ -11,18 +11,23 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 @Repository
-public class MongoDbSurveyShellRepository implements SurveyShellRepository {
+public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
 
     private final MongoOperations operations;
 
 
-    public MongoDbSurveyShellRepository(MongoOperations operations) {
+    public MongoDbSurveyShellsRepository(MongoOperations operations) {
         this.operations = operations;
     }
 
     @Override
     public SurveyShell findOneById(BigInteger id) {
-        Query query = query(where("id").is(id));
+        Query query = query(where("_id").is(id));
         return operations.findOne(query, SurveyShell.class);
+    }
+
+    @Override
+    public SurveyShell save(SurveyShell item) {
+        return operations.save(item);
     }
 }
