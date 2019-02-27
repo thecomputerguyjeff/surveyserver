@@ -25,4 +25,9 @@ public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
         Query query = query(where("_id").is(id));
         return operations.findOne(query, SurveyShell.class);
     }
+
+    @Override
+    public SurveyShell save(SurveyShell item) {
+        return operations.save(item);
+    }
 }
