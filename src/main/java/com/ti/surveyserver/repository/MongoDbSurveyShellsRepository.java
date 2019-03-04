@@ -1,5 +1,6 @@
 package com.ti.surveyserver.repository;
 
+import com.ti.surveyserver.model.Question;
 import com.ti.surveyserver.model.SurveyShell;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Query;
@@ -29,5 +30,11 @@ public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
     @Override
     public SurveyShell save(SurveyShell item) {
         return operations.save(item);
+    }
+
+    @Override
+    public SurveyShell findOneByTitle(String title){
+        Query query=query(where("title").is(title));
+        return operations.findOne(query,SurveyShell.class);
     }
 }

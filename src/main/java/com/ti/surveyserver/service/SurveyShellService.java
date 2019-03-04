@@ -5,6 +5,8 @@ import com.ti.surveyserver.repository.MongoDbSurveyShellsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
+
 @Service
 public class SurveyShellService {
     @Autowired
@@ -13,5 +15,9 @@ public class SurveyShellService {
     public SurveyShell saveSurveyShell(SurveyShell surveyShell) {
        return mongoDbSurveyShellsRepository.save(surveyShell);
 
+    }
+
+    public SurveyShell getSurveyShell (String surveyShellTitle){
+        return mongoDbSurveyShellsRepository.findOneByTitle(surveyShellTitle);
     }
 }

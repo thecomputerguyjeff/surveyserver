@@ -17,11 +17,11 @@ public class SurveyserverApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		SurveyShell surveyShell = SurveyShell.builder().title("Hello").build();
+		SurveyShell surveyShell = SurveyShell.builder().title("Hi").build();
 
 
 		SurveyShell saved = mongoDbSurveyShellsRepository.save(surveyShell);
-		SurveyShell retrieved = mongoDbSurveyShellsRepository.findOneById(saved.getId());
+		SurveyShell retrieved = mongoDbSurveyShellsRepository.findOneByTitle(saved.getTitle());
 		System.out.println(retrieved);
 
 
