@@ -1,6 +1,6 @@
 package com.ti.surveyserver;
 
-import com.ti.surveyserver.model.SurveyShell;
+import com.ti.surveyserver.model.shell.SurveyShell;
 import com.ti.surveyserver.repository.MongoDbSurveyShellsRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;

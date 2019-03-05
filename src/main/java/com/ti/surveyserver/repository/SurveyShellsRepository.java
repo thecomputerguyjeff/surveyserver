@@ -1,6 +1,6 @@
 package com.ti.surveyserver.repository;
 
-import com.ti.surveyserver.model.SurveyShell;
+import com.ti.surveyserver.model.shell.SurveyShell;
 import org.springframework.data.repository.Repository;
 
 import java.math.BigInteger;

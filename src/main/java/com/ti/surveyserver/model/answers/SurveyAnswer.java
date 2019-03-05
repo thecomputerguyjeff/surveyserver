@@ -1,5 +1,4 @@
-package com.ti.surveyserver.model;
-
+package com.ti.surveyserver.model.answers;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,23 +7,21 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "SurveyShells")
-public class SurveyShell {
+@Document(collection = "SurveyAnswers")
+public class SurveyAnswer {
 
     @Id
-    private BigInteger id;
-    private String author;
-    private String title;
-    private String description;
+    private String id;
+    private String surveySender;
+    private String surveyTaker;
+    private String surveyTitle;
 
-    private List<Question> questionList;
-    private List<Recipient> recipientList;
+    private List<Answers> answersList;
 
 }

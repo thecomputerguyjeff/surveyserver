@@ -1,6 +1,6 @@
 package com.ti.surveyserver.repository;
 
-import com.ti.surveyserver.model.SurveyShell;
+import com.ti.surveyserver.model.shell.SurveyShell;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
