@@ -4,6 +4,7 @@ import com.ti.surveyserver.model.answers.SurveyAnswer;
 import com.ti.surveyserver.model.shell.SurveyShell;
 import com.ti.surveyserver.service.SurveyAnswerService;
 import com.ti.surveyserver.service.SurveyShellService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,7 +40,7 @@ public class SurveyController {
     }
 
     @GetMapping(value = "retrieveAnswers/{IDToGet}")
-    public SurveyAnswer retrieveAnswers(@PathVariable String IDToGet){
+    public SurveyAnswer retrieveAnswers(@PathVariable ObjectId IDToGet){
 
         return surveyAnswerService.retrieveAnswerShell(IDToGet);
     }

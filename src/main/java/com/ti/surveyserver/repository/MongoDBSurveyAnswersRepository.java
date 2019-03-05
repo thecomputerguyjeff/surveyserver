@@ -21,7 +21,7 @@ public class MongoDBSurveyAnswersRepository implements SurveyAnswersRepository {
     }
 
     @Override
-    public SurveyAnswer findOneById(String id) {
+    public SurveyAnswer findOneById(Object id) {
         Query query = query(where("_id").is(id));
         return operations.findOne(query, SurveyAnswer.class);
     }

@@ -2,6 +2,7 @@ package com.ti.surveyserver.service;
 
 import com.ti.surveyserver.model.answers.SurveyAnswer;
 import com.ti.surveyserver.repository.MongoDBSurveyAnswersRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class SurveyAnswerService {
         return mongoDBSurveyAnswersRepository.save(surveyAnswer);
     }
 
-    public SurveyAnswer retrieveAnswerShell(String idToGet){
+    public SurveyAnswer retrieveAnswerShell(ObjectId idToGet){
         return mongoDBSurveyAnswersRepository.findOneById(idToGet);
     }
 }
