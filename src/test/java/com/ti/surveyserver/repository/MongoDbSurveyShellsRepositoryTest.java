@@ -1,7 +1,7 @@
 package com.ti.surveyserver.repository;
 
 import com.ti.surveyserver.SurveyserverApplication;
-import com.ti.surveyserver.model.SurveyShell;
+import com.ti.surveyserver.model.shell.SurveyShell;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,8 @@
 package com.ti.surveyserver;
 
-import com.ti.surveyserver.model.SurveyShell;
+import com.ti.surveyserver.model.answers.SurveyAnswer;
+import com.ti.surveyserver.model.shell.SurveyShell;
+import com.ti.surveyserver.repository.MongoDbSurveyAnswersRepository;
 import com.ti.surveyserver.repository.MongoDbSurveyShellsRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +27,18 @@ public class SurveyserverApplicationTests {
 		System.out.println(retrieved);
 
 
+
+	}
+
+	@Autowired
+	private MongoDbSurveyAnswersRepository mongoDbSurveyAnswersRepository;
+
+	@Test
+	public void hardcodedAnswersWillSaveToDatabase() {
+		SurveyAnswer surveyAnswer = SurveyAnswer.builder().surveySender("Sally").build();
+		SurveyAnswer saved = mongoDbSurveyAnswersRepository.save(surveyAnswer);
+		SurveyAnswer retrieved = mongoDbSurveyAnswersRepository.findOneById(saved.getId());
+		System.out.println(retrieved);
 
 	}
 
