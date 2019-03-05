@@ -5,7 +5,6 @@ import org.springframework.data.repository.Repository;
 
 import java.math.BigInteger;
 
-public interface SurveyAnswersRepository extends Repository<SurveyAnswer, BigInteger> {
-    SurveyAnswer findOneById(BigInteger id);
+public interface SurveyAnswersRepository extends Repository<SurveyAnswer, String> {
     SurveyAnswer save(SurveyAnswer item);
 }

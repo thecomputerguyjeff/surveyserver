@@ -12,6 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document
 public class Answer {
-    private Integer questionId;
+    private String questionId;
     private String answer;
 }

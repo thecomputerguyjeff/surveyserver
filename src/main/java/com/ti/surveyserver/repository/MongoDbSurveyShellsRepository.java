@@ -25,6 +25,13 @@ public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
         return operations.findOne(query, SurveyShell.class);
     }
 
+    //We want this to find all
+    @Override
+    public SurveyShell findOneByTitle(String title) {
+        Query query = query(where("title").is(title));
+        return operations.findOne(query, SurveyShell.class);
+    }
+
     @Override
     public SurveyShell save(SurveyShell item) {
         return operations.save(item);
