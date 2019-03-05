@@ -1,6 +1,5 @@
 package com.ti.surveyserver.controller;
 
-import com.ti.surveyserver.model.answers.SurveyAnswer;
 import com.ti.surveyserver.model.shell.SurveyShell;
 import com.ti.surveyserver.service.SurveyAnswerService;
 import com.ti.surveyserver.service.SurveyShellService;
@@ -17,36 +16,26 @@ public class SurveyController {
     @Autowired
     private SurveyShellService surveyShellService;
 
-    //shellId is in hex
-    @GetMapping(value="/getShell/{shellId}")
-    public SurveyShell getSurveyShellString(@PathVariable("shellId") String shellId){
-
-        System.out.println(shellId);
-        return surveyShellService.getSurveyShell(shellId);
-    }
-
-//  To use Integer, need to remove the e+ and change to a BigInteger
-//    @GetMapping(value="/getShellIntString/{shellId}")
-//    public SurveyShell getSurveyShelIntString(@PathVariable("shellId") String shellIdinInt){
-//
-//        BigInteger shellId = new BigInteger(shellIdinInt,10);
-//        System.out.println(shellId);
-//        return surveyShellService.getSurveyShell(shellId);
-//    }
-
-    @PostMapping(value = "/saveShell")
-    public SurveyShell saveSurveyShell(@RequestBody SurveyShell surveyShell){
-        SurveyShell theRet = surveyShellService.saveSurveyShell(surveyShell);
-        return theRet;
-
-    }
-
     @Autowired
     private SurveyAnswerService surveyAnswerService;
 
-    @PostMapping(value = "/saveAnswers")
-    public SurveyAnswer saveSurveyAnswers(@RequestBody SurveyAnswer surveyAnswer){
-        return surveyAnswerService.saveSurveyAnswer(surveyAnswer);
-
+    //shellId is in hex
+    @GetMapping(value="/getShell/{shellId}")
+    public SurveyShell getSurveyShellString(@PathVariable("shellId") String shellId){
+        return surveyShellService.getSurveyShell(shellId);
     }
+
+    //This thing should return a list of SurveyShells
+    @GetMapping(value = "/getShellByTitle/{surveyShellTitle}")
+    public SurveyShell getSurveyShell(@PathVariable String surveyShellTitle){
+        return surveyShellService.getSurveyShellByTitle(surveyShellTitle);
+    }
+
+    @PostMapping(value = "/saveShell")
+    public SurveyShell saveSurveyShell(@RequestBody SurveyShell surveyShell){
+        return surveyShellService.saveSurveyShell(surveyShell);
+    }
+
+
+
 }

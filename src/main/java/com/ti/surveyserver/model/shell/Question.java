@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Document
 public class Question {
-    private Integer questionId;
+    private String questionId;
     private String question;
     private String responseType;
     private List<String> responseChoices;

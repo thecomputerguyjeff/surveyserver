@@ -20,12 +20,6 @@ public class MongoDbSurveyAnswersRepository implements SurveyAnswersRepository {
     }
 
     @Override
-    public SurveyAnswer findOneById(BigInteger id) {
-        Query query = query(where("_id").is(id));
-        return operations.findOne(query, SurveyAnswer.class);
-    }
-
-    @Override
     public SurveyAnswer save(SurveyAnswer item) {
         return operations.save(item);
     }

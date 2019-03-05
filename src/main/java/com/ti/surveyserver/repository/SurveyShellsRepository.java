@@ -6,5 +6,6 @@ import org.springframework.data.repository.Repository;
 public interface SurveyShellsRepository extends Repository<SurveyShell, String> {
     SurveyShell findOneById(String id);
     SurveyShell save(SurveyShell customer);
+    SurveyShell findOneByTitle(String title); //Refactor to findAll
 
 }

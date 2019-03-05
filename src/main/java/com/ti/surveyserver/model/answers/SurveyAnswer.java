@@ -19,8 +19,8 @@ import java.util.List;
 
 public class SurveyAnswer {
     @Id
-    private BigInteger id;
-    private BigInteger shellId;
+    private String id;
+    private String shellId;
     private String surveySender;
     private Recipient surveyTaker;
     private List<Answer> userAnswers;

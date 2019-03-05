@@ -6,6 +6,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class SurveyShellService {
     @Autowired
@@ -13,10 +14,13 @@ public class SurveyShellService {
 
     public SurveyShell saveSurveyShell(SurveyShell surveyShell) {
        return mongoDbSurveyShellsRepository.save(surveyShell);
-
     }
 
     public SurveyShell getSurveyShell(String shellId) {
         return mongoDbSurveyShellsRepository.findOneById(shellId);
+    }
+
+    public SurveyShell getSurveyShellByTitle (String surveyShellTitle){
+        return mongoDbSurveyShellsRepository.findOneByTitle(surveyShellTitle);
     }
 }
