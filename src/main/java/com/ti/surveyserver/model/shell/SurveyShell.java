@@ -1,5 +1,6 @@
 package com.ti.surveyserver.model.shell;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "SurveyShells")
+@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonIgnoreProperties("_________________")
+
 public class SurveyShell {
 
     @Id
