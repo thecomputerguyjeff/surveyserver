@@ -1,5 +1,6 @@
 package com.ti.surveyserver.model.shell;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,11 +19,15 @@ public class SurveyShell {
 
     @Id
     private String id;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String author;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String title;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String description;
-
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Question> questionList;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Recipient> recipientList;
 
 }

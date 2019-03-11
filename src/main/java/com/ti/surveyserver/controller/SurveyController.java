@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -27,15 +28,17 @@ public class SurveyController {
 
     //This thing should return a list of SurveyShells
     @GetMapping(value = "/getShellByTitle/{surveyShellTitle}")
-    public SurveyShell getSurveyShell(@PathVariable String surveyShellTitle){
+    public List<SurveyShell> getSurveyShell(@PathVariable String surveyShellTitle){
         return surveyShellService.getSurveyShellByTitle(surveyShellTitle);
+    }
+
+    @GetMapping(value = "/getShellByAuthor/{surveyShellAuthor}")
+    public List<SurveyShell> getSurveyShellByAuthor(@PathVariable String surveyShellAuthor){
+        return surveyShellService.getSurveyShellByAuthor(surveyShellAuthor);
     }
 
     @PostMapping(value = "/saveShell")
     public SurveyShell saveSurveyShell(@RequestBody SurveyShell surveyShell){
         return surveyShellService.saveSurveyShell(surveyShell);
     }
-
-
-
 }
