@@ -1,5 +1,7 @@
 package com.ti.surveyserver.model.answers;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.ti.surveyserver.model.shell.Recipient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +18,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "SurveyAnswers")
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonIgnoreProperties("_________________")
 public class SurveyAnswer {
     @Id
     private String id;

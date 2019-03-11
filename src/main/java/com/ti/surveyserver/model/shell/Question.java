@@ -1,5 +1,6 @@
 package com.ti.surveyserver.model.shell;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Question {
     private String questionId;
     private String question;

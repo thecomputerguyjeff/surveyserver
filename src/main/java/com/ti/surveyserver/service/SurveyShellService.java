@@ -6,6 +6,8 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class SurveyShellService {
@@ -20,7 +22,7 @@ public class SurveyShellService {
         return mongoDbSurveyShellsRepository.findOneById(shellId);
     }
 
-    public SurveyShell getSurveyShellByTitle (String surveyShellTitle){
-        return mongoDbSurveyShellsRepository.findOneByTitle(surveyShellTitle);
+    public List<SurveyShell> getSurveyShellByTitle (String surveyShellTitle){
+        return mongoDbSurveyShellsRepository.findAllByTitle(surveyShellTitle);
     }
 }
