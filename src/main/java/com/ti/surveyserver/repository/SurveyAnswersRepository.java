@@ -7,4 +7,5 @@ import java.math.BigInteger;
 
 public interface SurveyAnswersRepository extends Repository<SurveyAnswer, String> {
     SurveyAnswer save(SurveyAnswer item);
+    SurveyAnswer findOneById(Object id);
 }
