@@ -11,12 +11,12 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 @Repository
-public class MongoDbSurveyAnswersRepository implements SurveyAnswersRepository {
+public class MongoDBSurveyAnswersRepository implements SurveyAnswersRepository {
 
     private final MongoOperations operations;
 
 
-    public MongoDbSurveyAnswersRepository(MongoOperations operations) {
+    public MongoDBSurveyAnswersRepository(MongoOperations operations) {
         this.operations = operations;
     }
 
