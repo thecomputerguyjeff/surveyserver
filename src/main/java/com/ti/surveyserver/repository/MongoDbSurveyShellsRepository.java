@@ -1,5 +1,10 @@
 package com.ti.surveyserver.repository;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Projections;
+import com.ti.surveyserver.model.answers.SurveyAnswer;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Projections;
@@ -38,20 +43,36 @@ public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
 
     //We want this to find all
     //@org.springframework.data.mongodb.repository.Query(value = "{'title': ?0}", fields = "{'title':1, 'description': 1}")
+
     @Override
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public List<SurveyShell> findAllByTitle(String title) {
 //        List<Bson> queryFilters = new ArrayList<>();
 //        queryFilters.add(Filters.eq("title", 1));
 //        queryFilters.add(Filters.eq("description", 1));
 
         Query querySpecific = new Query();
-        querySpecific = query(where("title").is(title));
+        querySpecific = query(where("title").is("*"+title+"*"));
         querySpecific.fields().include("title").include("description");
 
 
-       //Projections.include("title", "description");
-       return operations.find(querySpecific, SurveyShell.class);
+        //Projections.include("title", "description");
+        return operations.find(querySpecific, SurveyShell.class);
 
+    }
+
+    @Override
+    public List<SurveyShell> findAllByAuthor(String author) {
+//        List<Bson> queryFilters = new ArrayList<>();
+//        queryFilters.add(Filters.eq("title", 1));
+//        queryFilters.add(Filters.eq("description", 1));
+
+        Query querySpecific = new Query();
+        querySpecific = query(where("author").is(author));
+        querySpecific.fields().include("title").include("description");
+
+        //Projections.include("title", "description");
+        return operations.find(querySpecific, SurveyShell.class);
     }
 
     @Override

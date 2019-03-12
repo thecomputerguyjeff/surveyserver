@@ -1,5 +1,6 @@
 package com.ti.surveyserver.service;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.ti.surveyserver.model.shell.SurveyShell;
 import com.ti.surveyserver.repository.MongoDbSurveyShellsRepository;
 import org.bson.types.ObjectId;
@@ -15,7 +16,7 @@ public class SurveyShellService {
     private MongoDbSurveyShellsRepository mongoDbSurveyShellsRepository;
 
     public SurveyShell saveSurveyShell(SurveyShell surveyShell) {
-       return mongoDbSurveyShellsRepository.save(surveyShell);
+        return mongoDbSurveyShellsRepository.save(surveyShell);
     }
 
     public SurveyShell getSurveyShell(String shellId) {
@@ -24,5 +25,8 @@ public class SurveyShellService {
 
     public List<SurveyShell> getSurveyShellByTitle (String surveyShellTitle){
         return mongoDbSurveyShellsRepository.findAllByTitle(surveyShellTitle);
+    }
+    public List<SurveyShell> getSurveyShellByAuthor (String surveyShellAuthor){
+        return mongoDbSurveyShellsRepository.findAllByAuthor(surveyShellAuthor);
     }
 }
