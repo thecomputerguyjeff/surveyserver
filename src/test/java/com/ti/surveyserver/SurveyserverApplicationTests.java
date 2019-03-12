@@ -23,8 +23,8 @@ public class SurveyserverApplicationTests {
 
 
 		SurveyShell saved = mongoDbSurveyShellsRepository.save(surveyShell);
-		SurveyShell retrieved = mongoDbSurveyShellsRepository.findOneByTitle(saved.getTitle());
-		System.out.println(retrieved);
+//		SurveyShell retrieved = mongoDbSurveyShellsRepository.findOneByTitle(saved.getTitle());
+//		System.out.println(retrieved);
 
 
 

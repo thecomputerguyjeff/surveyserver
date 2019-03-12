@@ -17,7 +17,7 @@ public class MongoDbSurveyShellsRepositoryTest {
     private MongoDbSurveyShellsRepository surveyShellRepository;
     @Test
     public void firstMongoTest(){
-        SurveyShell testSurveyShell=surveyShellRepository.findOneById(BigInteger.ONE);
+//        SurveyShell testSurveyShell=surveyShellRepository.findOneById(BigInteger.ONE);
 
     }
 
