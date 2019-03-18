@@ -17,8 +17,7 @@ public class SurveyController {
     @Autowired
     private SurveyShellService surveyShellService;
 
-    @Autowired
-    private SurveyAnswerService surveyAnswerService;
+
 
     //shellId is in hex
     @GetMapping(value="/getShell/{shellId}")
@@ -40,5 +39,10 @@ public class SurveyController {
     @PostMapping(value = "/saveShell")
     public SurveyShell saveSurveyShell(@RequestBody SurveyShell surveyShell){
         return surveyShellService.saveSurveyShell(surveyShell);
+    }
+
+    @PostMapping(value = "/updateShell")
+    public SurveyShell updateSurveyShell(@RequestBody SurveyShell surveyShell){
+        return surveyShellService.updateSurveyShell(surveyShell);
     }
 }

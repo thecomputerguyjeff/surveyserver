@@ -29,4 +29,8 @@ public class SurveyShellService {
     public List<SurveyShell> getSurveyShellByAuthor (String surveyShellAuthor){
         return mongoDbSurveyShellsRepository.findAllByAuthor(surveyShellAuthor);
     }
+
+    public SurveyShell updateSurveyShell(SurveyShell surveyShell) {
+        return mongoDbSurveyShellsRepository.updateShell(surveyShell);
+    }
 }

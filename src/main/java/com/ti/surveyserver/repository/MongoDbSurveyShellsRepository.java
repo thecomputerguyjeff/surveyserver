@@ -1,33 +1,26 @@
 package com.ti.surveyserver.repository;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.JsonSerializer;
 import com.mongodb.BasicDBObject;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Projections;
-import com.ti.surveyserver.model.answers.SurveyAnswer;
-import com.mongodb.BasicDBObject;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Projections;
-import com.ti.surveyserver.model.answers.SurveyAnswer;
 import com.ti.surveyserver.model.shell.SurveyShell;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.repository.query.*;
-import org.bson.conversions.Bson;
-import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.convert.MongoConverter;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
+import static org.springframework.data.util.ClassTypeInformation.COLLECTION;
 
 @Repository
 public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
 
+    @Autowired
+    MongoConverter mongoConverter;
 
     private final MongoOperations operations;
 
@@ -77,6 +70,36 @@ public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
 
     @Override
     public SurveyShell save(SurveyShell item) {
+
+        if(operations.find(query(where("id").is(item.getId())).limit(1), SurveyShell.class)!= null) {
+            Query query = new Query(new Criteria("id").is(item.getId()));
+            Update update = new Update();
+            if (item.getAuthor()!=null){
+                update.set("author", item.getAuthor());
+            }
+            if (item.getTitle()!=null){
+                update.set("title", item.getTitle());
+            }
+            if (item.getDescription()!=null){
+                update.set("description", item.getDescription());
+            }
+            if (item.getQuestionList()!=null){
+                update.set("questionList", item.getQuestionList());
+            }
+            if (item.getRecipientList()!=null){
+                update.set("recipientList", item.getRecipientList());
+            }
+            operations.updateFirst(query, update, SurveyShell.class);
+            return item;
+        }
+//        BasicDBObject basicDBObject = new BasicDBObject();
+//        mongoConverter.write(item, basicDBObject);
+
+
         return operations.save(item);
+    }
+
+    public SurveyShell updateShell(SurveyShell surveyShell) {
+        return null;
     }
 }
