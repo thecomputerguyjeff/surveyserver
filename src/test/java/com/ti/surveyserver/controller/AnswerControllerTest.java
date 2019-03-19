@@ -50,7 +50,4 @@ public class AnswerControllerTest {
 //        ReflectionTestUtils.setField(answerController, "surveyAnswerService", mockSAS);
 
     }
-
-
-
 }

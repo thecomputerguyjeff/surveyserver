@@ -26,5 +26,5 @@ public class SurveyAnswer {
     private String shellId;
     private String surveySender;
     private Recipient surveyTaker;
-    private List<Answer> userAnswers;
+    private List<String> userAnswers;
 }
