@@ -11,7 +11,7 @@ public class SurveyShellHelperService{
         Integer size=fullList.size();
         for (int i=0;i<size;i++) {
             SurveyShell thisOne=fullList.get(i);
-            if(thisOne.getTitle().equals(title)){
+            if(thisOne.getTitle().equalsIgnoreCase(title)){
                 matches.add(thisOne);
             }
         }
