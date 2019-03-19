@@ -27,6 +27,4 @@ public class AnswerControllerTest {
         assertThat(answerController.saveSurveyAnswers(null)).isEqualTo(SurveyAnswer.builder().build());
     }
 
-
-
 }

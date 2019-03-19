@@ -1,5 +1,6 @@
 package com.ti.surveyserver.controller;
 
+import com.ti.surveyserver.model.answers.CompiledSurvey;
 import com.ti.surveyserver.model.answers.SurveyAnswer;
 import com.ti.surveyserver.service.SurveyAnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ public class AnswerController {
         return surveyAnswerService.saveSurveyAnswer(surveyAnswer);
 
     }
+    @GetMapping(value = "/getAnswers/{shellId}")
+    public CompiledSurvey getCompiledAnswers(@PathVariable String shellId) {
+        return surveyAnswerService.compileSurveyAnswers(shellId);
+    }
+
 
 
 }

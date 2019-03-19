@@ -22,15 +22,10 @@ public class SurveyShell {
 
     @Id
     private String id;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String author;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String title;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String description;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Question> questionList;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Recipient> recipientList;
 
 }
