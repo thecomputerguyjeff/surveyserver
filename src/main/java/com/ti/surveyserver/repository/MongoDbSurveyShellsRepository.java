@@ -10,6 +10,7 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Projections;
 import com.ti.surveyserver.model.answers.SurveyAnswer;
 import com.ti.surveyserver.model.shell.SurveyShell;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.repository.query.*;
 import org.bson.conversions.Bson;
@@ -51,8 +52,9 @@ public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
 //        queryFilters.add(Filters.eq("title", 1));
 //        queryFilters.add(Filters.eq("description", 1));
 
-        Query querySpecific = new Query();
-        querySpecific = query(where("title").is("*"+title+"*"));
+        Query querySpecific = query(where("title").regex(title,"i"));//it finds all that have those exact letters in the answer
+        querySpecific.with(new Sort(Sort.Direction.ASC, "title"));//then it sorts the not exact ones by title
+
         querySpecific.fields().include("title").include("description");
 
 
