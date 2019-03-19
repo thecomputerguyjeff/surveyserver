@@ -20,7 +20,6 @@ import java.util.List;
 @Document(collection = "SurveyAnswers")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 //@JsonIgnoreProperties("_________________")
-
 public class SurveyAnswer {
     @Id
     private String id;

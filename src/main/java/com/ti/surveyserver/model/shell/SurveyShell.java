@@ -16,8 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 @Document(collection = "SurveyShells")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-//@JsonIgnoreProperties("_________________")
-
 public class SurveyShell {
 
     @Id
