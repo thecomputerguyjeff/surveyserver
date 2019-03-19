@@ -15,10 +15,7 @@ import java.util.List;
 @Document
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Question {
-    private String questionId;
     private String question;
     private String responseType;
     private List<String> responseChoices;
-
-
 }
