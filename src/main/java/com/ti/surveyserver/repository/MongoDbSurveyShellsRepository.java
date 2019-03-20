@@ -1,20 +1,13 @@
 package com.ti.surveyserver.repository;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.mongodb.BasicDBObject;
 import com.ti.surveyserver.model.shell.SurveyShell;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.convert.MongoConverter;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
@@ -38,20 +31,12 @@ public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
     //@org.springframework.data.mongodb.repository.Query(value = "{'title': ?0}", fields = "{'title':1, 'description': 1}")
 
     @Override
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     public List<SurveyShell> findAllByTitle(String title) {
-//        List<Bson> queryFilters = new ArrayList<>();
-//        queryFilters.add(Filters.eq("title", 1));
-//        queryFilters.add(Filters.eq("description", 1));
+        Query querySpecific = query(where("title").regex(title,"i"));//it finds all that have those exact letters in the answer
+        querySpecific.with(new Sort(Sort.Direction.ASC, "title", "description"));//then it sorts the not exact ones by title
 
-        Query querySpecific = new Query();
-        querySpecific = query(where("title").is("*" + title + "*"));
         querySpecific.fields().include("title").include("description");
-
-
-        //Projections.include("title", "description");
         return operations.find(querySpecific, SurveyShell.class);
-
     }
 
     @Override
