@@ -13,5 +13,5 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompiledSurvey {
-    private List<CompiledSurveyQuestion> questions = new ArrayList<>();
+    private List<CompiledSurveyQuestion> questions;
 }
