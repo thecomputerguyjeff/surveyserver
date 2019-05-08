@@ -10,6 +10,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 
 public class SurveyController {
