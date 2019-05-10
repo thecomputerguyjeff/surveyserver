@@ -13,6 +13,6 @@ public interface SurveyShellsRepository extends Repository<SurveyShell, String> 
     @Query(value = "{'title': ?0}", fields = "{'title':1, 'description': 1}")
     List<SurveyShell> findAllByTitle(String title);
     List<SurveyShell> findAllByAuthor(String author);
-
+    //List<SurveyShell> getAllShells();
 
 }

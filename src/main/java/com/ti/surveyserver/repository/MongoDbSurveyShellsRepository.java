@@ -81,4 +81,11 @@ public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
         }
         return operations.save(item);
     }
+
+
+
+    public List<SurveyShell> getAllShells(){
+        Query query = query(where("_id").exists(true));
+       return operations.find(query,SurveyShell.class);
+    }
 }

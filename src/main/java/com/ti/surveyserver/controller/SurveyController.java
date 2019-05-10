@@ -10,6 +10,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 
 public class SurveyController {
@@ -40,5 +41,10 @@ public class SurveyController {
     @PostMapping(value = "/saveShell")
     public SurveyShell saveSurveyShell(@RequestBody SurveyShell surveyShell){
         return surveyShellService.saveSurveyShell(surveyShell);
+    }
+
+    @GetMapping(value = "/getAllShells")
+    public List<SurveyShell> getAllShells(){
+        return surveyShellService.getAllShells();
     }
 }
