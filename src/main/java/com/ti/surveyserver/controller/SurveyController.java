@@ -42,4 +42,9 @@ public class SurveyController {
     public SurveyShell saveSurveyShell(@RequestBody SurveyShell surveyShell){
         return surveyShellService.saveSurveyShell(surveyShell);
     }
+
+    @GetMapping(value = "/getAllShells")
+    public List<SurveyShell> getAllShells(){
+        return surveyShellService.getAllShells();
+    }
 }
