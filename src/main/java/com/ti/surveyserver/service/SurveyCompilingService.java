@@ -21,7 +21,7 @@ public class SurveyCompilingService {
 
     public List<CompiledSurveyQuestion> getCompiledSurveyQuestions(String shellId) {
         return mongoDbSurveyShellsRepository.findOneById(shellId).getQuestionList().stream()
-                .map(q -> CompiledSurveyQuestion.builder().question(q.getQuestion()).build())
+                .map(q -> CompiledSurveyQuestion.builder().question(q.getQuestion()).questionType(q.getResponseType()).potentialAnswers(q.getResponseChoices()).build())
                 .collect(Collectors.toList());
     }
 

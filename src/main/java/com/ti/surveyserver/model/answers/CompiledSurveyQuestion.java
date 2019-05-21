@@ -14,5 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CompiledSurveyQuestion {
     private String question;
+    private String questionType;
     private List<String> allAnswers;
+    private List<String> potentialAnswers;
 }
