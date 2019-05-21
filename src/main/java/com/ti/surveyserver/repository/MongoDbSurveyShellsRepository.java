@@ -56,9 +56,9 @@ public class MongoDbSurveyShellsRepository implements SurveyShellsRepository {
     @Override
     public SurveyShell save(SurveyShell item) {
 
-        Query query = query(where("id").is(item.getId()));
+        Query query = query(where("_id").is(item.getId()));
 
-        if (operations.find(query.limit(1), SurveyShell.class) != null) {
+        if (operations.find(query.limit(1), SurveyShell.class).size() != 0) {
             Update update = new Update();
 
             if (item.getAuthor() != null) {
